@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'time_table.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -6,33 +7,35 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Drawer(), // Add your drawer items here
+      drawer: Drawer(  // Add drawer items here if needed
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: const [
+            DrawerHeader(
+              decoration: BoxDecoration(color: Colors.green),
+              child: Text('Namma Metro', style: TextStyle(color: Colors.white, fontSize: 24)),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+            ),
+            // Add more drawer options here
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: const Text("Namma Metro"),
-        leading: Builder(
-          builder: (context) => IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () => Scaffold.of(context).openDrawer(),
-          ),
-        ),
         backgroundColor: Colors.green,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // 🔻 Banner from assets
             SizedBox(
               height: 180,
               width: double.infinity,
-              child: Image.asset(
-                'assets/metro_banner.jpeg',
-                fit: BoxFit.cover,
-              ),
+              child: Image.asset('assets/metro_banner.jpeg', fit: BoxFit.cover),
             ),
-
             const SizedBox(height: 20),
-
-            // 🔻 Metro Feature Buttons
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: GridView.count(
@@ -41,17 +44,46 @@ class HomeScreen extends StatelessWidget {
                 crossAxisSpacing: 16,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                children: const [
-                  MetroFeature(icon: Icons.account_balance_wallet, label: 'Top Up', color: Colors.green),
-                  MetroFeature(icon: Icons.qr_code_2, label: 'QR Tickets', color: Colors.purple),
-                  MetroFeature(icon: Icons.train, label: 'Time Table', color: Colors.green),
-                  MetroFeature(icon: Icons.map, label: 'Map', color: Colors.purple),
-                  MetroFeature(icon: Icons.calculate, label: 'Fare Info', color: Colors.purple),
-                  MetroFeature(icon: Icons.help_outline, label: 'Help', color: Colors.green),
+                children: [
+                  const MetroFeature(
+                    icon: Icons.account_balance_wallet,
+                    label: 'Top Up',
+                    color: Colors.green,
+                  ),
+                  const MetroFeature(
+                    icon: Icons.qr_code_2,
+                    label: 'QR Tickets',
+                    color: Colors.purple,
+                  ),
+                  MetroFeature(
+                    icon: Icons.train,
+                    label: 'Time Table',
+                    color: Colors.green,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const TimeTableScreen()),
+                      );
+                    },
+                  ),
+                  const MetroFeature(
+                    icon: Icons.map,
+                    label: 'Map',
+                    color: Colors.purple,
+                  ),
+                  const MetroFeature(
+                    icon: Icons.calculate,
+                    label: 'Fare Info',
+                    color: Colors.purple,
+                  ),
+                  const MetroFeature(
+                    icon: Icons.help_outline,
+                    label: 'Help',
+                    color: Colors.green,
+                  ),
                 ],
               ),
             ),
-
             const SizedBox(height: 20),
           ],
         ),
@@ -64,27 +96,25 @@ class MetroFeature extends StatelessWidget {
   final IconData icon;
   final String label;
   final Color color;
+  final VoidCallback? onTap;
 
   const MetroFeature({
     super.key,
     required this.icon,
     required this.label,
     required this.color,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
-        // TODO: Add feature navigation
-      },
+      onPressed: onTap ?? () {},
       style: ElevatedButton.styleFrom(
         foregroundColor: color,
         backgroundColor: Colors.white,
         elevation: 4,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         padding: const EdgeInsets.symmetric(vertical: 20),
       ),
       child: Column(
@@ -92,10 +122,7 @@ class MetroFeature extends StatelessWidget {
         children: [
           Icon(icon, size: 40),
           const SizedBox(height: 10),
-          Text(
-            label,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-          )
+          Text(label, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
         ],
       ),
     );
