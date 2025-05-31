@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'time_table.dart';
-import 'fare_info.dart'; // Add this import
+import 'fare_info.dart';
+import 'map.dart'; // <-- Import MapScreen
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -20,7 +21,6 @@ class HomeScreen extends StatelessWidget {
               leading: Icon(Icons.home),
               title: Text('Home'),
             ),
-            // Add more drawer options here
           ],
         ),
       ),
@@ -47,11 +47,6 @@ class HomeScreen extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
                   const MetroFeature(
-                    icon: Icons.account_balance_wallet,
-                    label: 'Top Up',
-                    color: Colors.green,
-                  ),
-                  const MetroFeature(
                     icon: Icons.qr_code_2,
                     label: 'QR Tickets',
                     color: Colors.purple,
@@ -67,12 +62,17 @@ class HomeScreen extends StatelessWidget {
                       );
                     },
                   ),
-                  const MetroFeature(
+                  MetroFeature(
                     icon: Icons.map,
                     label: 'Map',
                     color: Colors.purple,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const MapScreen()),
+                      );
+                    },
                   ),
-                  // ✅ Updated Fare Info with navigation
                   MetroFeature(
                     icon: Icons.calculate,
                     label: 'Fare Info',
@@ -83,11 +83,6 @@ class HomeScreen extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => FareInfoScreen()),
                       );
                     },
-                  ),
-                  const MetroFeature(
-                    icon: Icons.help_outline,
-                    label: 'Help',
-                    color: Colors.green,
                   ),
                 ],
               ),

@@ -17,13 +17,15 @@ class TimeTableScreen extends StatelessWidget {
               Tab(
                 child: Text(
                   'Purple Line',
-                  style: TextStyle(color: Colors.purpleAccent, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: Colors.purpleAccent, fontWeight: FontWeight.bold),
                 ),
               ),
               Tab(
                 child: Text(
                   'Green Line',
-                  style: TextStyle(color: Colors.lightGreenAccent, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: Colors.lightGreenAccent, fontWeight: FontWeight.bold),
                 ),
               ),
             ],
@@ -40,16 +42,17 @@ class TimeTableScreen extends StatelessWidget {
   }
 }
 
+// ✅ Station data moved outside the widget
+const List<Map<String, String>> purpleStations = [
+  {'station': 'Challaghatta', 'arrival': '06:00 AM', 'departure': '06:05 AM'},
+  {'station': 'Vijayanagar', 'arrival': '06:15 AM', 'departure': '06:20 AM'},
+  {'station': 'Majestic', 'arrival': '06:30 AM', 'departure': '06:35 AM'},
+  {'station': 'MG Road', 'arrival': '06:45 AM', 'departure': '06:50 AM'},
+  {'station': 'Baiyappanahalli', 'arrival': '07:00 AM', 'departure': '07:05 AM'},
+];
+
 class PurpleLineTimeTable extends StatelessWidget {
   const PurpleLineTimeTable({super.key});
-
-  final List<Map<String, String>> purpleStations = const [
-    {'station': 'Challaghatta', 'arrival': '06:00 AM', 'departure': '06:05 AM'},
-    {'station': 'Vijayanagar', 'arrival': '06:15 AM', 'departure': '06:20 AM'},
-    {'station': 'Majestic', 'arrival': '06:30 AM', 'departure': '06:35 AM'},
-    {'station': 'MG Road', 'arrival': '06:45 AM', 'departure': '06:50 AM'},
-    {'station': 'Baiyappanahalli', 'arrival': '07:00 AM', 'departure': '07:05 AM'},
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -60,9 +63,18 @@ class PurpleLineTimeTable extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
           child: Row(
             children: [
-              Expanded(flex: 3, child: Text('Station', style: TextStyle(fontWeight: FontWeight.bold))),
-              Expanded(flex: 2, child: Text('Arrival', style: TextStyle(fontWeight: FontWeight.bold))),
-              Expanded(flex: 2, child: Text('Departure', style: TextStyle(fontWeight: FontWeight.bold))),
+              Expanded(
+                  flex: 3,
+                  child: Text('Station',
+                      style: TextStyle(fontWeight: FontWeight.bold))),
+              Expanded(
+                  flex: 2,
+                  child: Text('Arrival',
+                      style: TextStyle(fontWeight: FontWeight.bold))),
+              Expanded(
+                  flex: 2,
+                  child: Text('Departure',
+                      style: TextStyle(fontWeight: FontWeight.bold))),
             ],
           ),
         ),
@@ -101,16 +113,17 @@ class PurpleLineTimeTable extends StatelessWidget {
   }
 }
 
+// ✅ Green stations list also moved out
+const List<Map<String, String>> greenStations = [
+  {'station': 'Nagasandra', 'arrival': '06:10 AM', 'departure': '06:15 AM'},
+  {'station': 'Yeshwanthpur', 'arrival': '06:25 AM', 'departure': '06:30 AM'},
+  {'station': 'Majestic', 'arrival': '06:40 AM', 'departure': '06:45 AM'},
+  {'station': 'Lalbagh', 'arrival': '06:55 AM', 'departure': '07:00 AM'},
+  {'station': 'Silk Institute', 'arrival': '07:10 AM', 'departure': '07:15 AM'},
+];
+
 class GreenLineTimeTable extends StatelessWidget {
   const GreenLineTimeTable({super.key});
-
-  final List<Map<String, String>> greenStations = const [
-    {'station': 'Nagasandra', 'arrival': '06:10 AM', 'departure': '06:15 AM'},
-    {'station': 'Yeshwanthpur', 'arrival': '06:25 AM', 'departure': '06:30 AM'},
-    {'station': 'Majestic', 'arrival': '06:40 AM', 'departure': '06:45 AM'},
-    {'station': 'Lalbagh', 'arrival': '06:55 AM', 'departure': '07:00 AM'},
-    {'station': 'Silk Institute', 'arrival': '07:10 AM', 'departure': '07:15 AM'},
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -121,9 +134,18 @@ class GreenLineTimeTable extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
           child: Row(
             children: [
-              Expanded(flex: 3, child: Text('Station', style: TextStyle(fontWeight: FontWeight.bold))),
-              Expanded(flex: 2, child: Text('Arrival', style: TextStyle(fontWeight: FontWeight.bold))),
-              Expanded(flex: 2, child: Text('Departure', style: TextStyle(fontWeight: FontWeight.bold))),
+              Expanded(
+                  flex: 3,
+                  child: Text('Station',
+                      style: TextStyle(fontWeight: FontWeight.bold))),
+              Expanded(
+                  flex: 2,
+                  child: Text('Arrival',
+                      style: TextStyle(fontWeight: FontWeight.bold))),
+              Expanded(
+                  flex: 2,
+                  child: Text('Departure',
+                      style: TextStyle(fontWeight: FontWeight.bold))),
             ],
           ),
         ),
