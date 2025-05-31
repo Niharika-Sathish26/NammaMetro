@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
+import 'screens/fare_info.dart'; // ✅ Import Fare Info screen
 
 void main() {
   runApp(const NammaMetroApp());
@@ -15,8 +16,12 @@ class NammaMetroApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const HomeScreen(),
       debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const HomeScreen(),
+        '/fare-info': (context) => const FareInfoScreen(), // ✅ Named route
+      },
     );
   }
 }

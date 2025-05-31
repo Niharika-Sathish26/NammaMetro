@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'time_table.dart';
+import 'fare_info.dart'; // Add this import
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -7,7 +8,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(  // Add drawer items here if needed
+      drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: const [
@@ -71,10 +72,17 @@ class HomeScreen extends StatelessWidget {
                     label: 'Map',
                     color: Colors.purple,
                   ),
-                  const MetroFeature(
+                  // ✅ Updated Fare Info with navigation
+                  MetroFeature(
                     icon: Icons.calculate,
                     label: 'Fare Info',
                     color: Colors.purple,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FareInfoScreen()),
+                      );
+                    },
                   ),
                   const MetroFeature(
                     icon: Icons.help_outline,
