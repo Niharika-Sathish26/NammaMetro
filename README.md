@@ -31,4 +31,4 @@ This project was created as a learning-focused clone to understand Flutter UI de
 
 ### Clone the repository
 ```bash
-git clone https://github.com/Niharika-Sathish26/namma-metro-clone.git
+https://github.com/Niharika-Sathish26/NammaMetro.git
