@@ -1,16 +1,34 @@
-# myapp
+# Namma Metro Clone 
 
-A new Flutter project.
+A Flutter-based mobile application inspired by **Bangalore’s Namma Metro**, built to simulate metro routes, stations, and basic travel information in a clean and user-friendly interface.
 
-## Getting Started
+This project was created as a learning-focused clone to understand Flutter UI development, navigation, and app structure.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## Features
+- View metro lines and stations
+- Select source and destination stations
+- Display route information
+- Simple and intuitive UI
+- Smooth navigation between screens
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+##  Tech Stack
+- **Framework:** Flutter
+- **Language:** Dart
+- **Platform:** Android (can be extended to iOS)
+
+---
+
+##  Getting Started
+
+### Prerequisites
+- Flutter SDK installed
+- Android Studio / VS Code
+- Android Emulator or physical device
+
+### Clone the repository
+```bash
+git clone https://github.com/your-username/namma-metro-clone.git
